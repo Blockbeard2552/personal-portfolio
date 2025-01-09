@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { SectionHeadline } from '$components';
+	import { SectionHeadline, Button, ExperienceTable } from '$components';
 	import image from '$assets/about-me.jpeg';
-	import Button from '$components/Button.svelte';
 	import { goto } from '$app/navigation';
 
 	function onclick() {
@@ -29,9 +28,10 @@
 				field, so you can skip the pitfalls and fast-track your development journey. If you're eager
 				to learn from real-world experience and practical know-how, let's dive in together.
 			</p>
-			<Button className="mt-m" {onclick}>Let's Talk!</Button>
+			<Button className="mt-m" {onclick}>Tell Me About Your Project!</Button>
 		</div>
 	</div>
+	<ExperienceTable />
 </section>
 
 <style>
