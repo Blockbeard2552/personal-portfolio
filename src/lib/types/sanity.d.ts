@@ -1,5 +1,5 @@
 
-type DevExperience = {
+type SanityWorkExperience = {
   _id: string
   _type: 'devExperience'
   _createdAt: string
@@ -11,16 +11,16 @@ type DevExperience = {
   endDate?: string
 }
 
-type Project = {
+type SanityProject = {
   _id: string
   _type: 'project'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name?: string
-  company?: string
-  slug?: string
-  image?: {
+  name: string
+  company: string
+  slug: string
+  image: {
     asset?: {
       _ref: string
       _type: 'reference'
@@ -31,12 +31,12 @@ type Project = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-  dateAccomplished?: string
-  content?: Array<
+  dateAccomplished: string
+  content: Array<
     | RawTextContent
     | RawImageContent
   >
-  stack?: Array<string>
+  stack: Array<string>
 }
 
 interface RawTextContent {

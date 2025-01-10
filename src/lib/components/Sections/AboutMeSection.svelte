@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { SectionHeadline, Button, ExperienceTable } from '$components';
-	import image from '$assets/about-me.jpeg';
+	import image from '$assets/about-me.png';
 	import { goto } from '$app/navigation';
-	import type { DevExperience } from '$lib/types/sanity';
 
 	interface AboutMeProps {
 		workExperience: DevExperience[];
@@ -43,19 +42,21 @@
 
 <style>
 	.content-container {
-		display: flex;
+		display: grid;
 		justify-content: space-between;
 		align-items: strertch;
 	}
 
 	.image {
-		width: 42%;
+		width: 846px;
+		max-height: 546px;
 		border-radius: 20px;
-		object-fit: cover;
+		object-fit: contain;
+		margin-bottom: 20px;
 	}
 
 	.text {
-		width: 55%;
+		width: 100%;
 		text-align: left;
 	}
 </style>

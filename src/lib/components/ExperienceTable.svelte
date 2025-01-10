@@ -1,14 +1,13 @@
 <script lang="ts">
-	import type { DevExperience } from '$lib/types/sanity';
-
 	interface ExperienceTableProps {
-		workExperience: DevExperience[];
+		workExperience: SanityWorkExperience[];
 	}
 
 	let { workExperience }: ExperienceTableProps = $props();
 </script>
 
 <section class="default-margin work-experience mt-l">
+	<h2 class="headline">Past Work <br /> Experience</h2>
 	<ul class="work-experience-list">
 		{#each workExperience as job}
 			<li class="work-item">
@@ -28,20 +27,36 @@
 			</li>
 		{/each}
 	</ul>
-	<h2 class="headline">Past Work <br /> Experience</h2>
 </section>
 
 <style>
 	.work-experience {
-		display: flex;
+		display: grid;
 		justify-content: space-between;
-		width: 100%;
+		width: 100%; /* Allow it to scale within its container */
+		max-width: 1200px; /* Set a maximum width for larger screens */
+		margin: 0 auto; /* Center the section horizontally */
+		grid-template-columns: 1fr; /* Default to one column */
+		gap: 16px; /* Add spacing between grid items */
+		padding: 0 16px; /* Prevent content from touching the viewport edges */
+		padding-top: 24px;
+		box-sizing: border-box; /* Ensure padding is included in the element's total width */
+		overflow-x: hidden; /* Prevent horizontal overflow */
+	}
+
+	/* Media query for larger screens */
+	@media (min-width: 768px) {
+		.work-experience {
+			grid-template-columns: repeat(2, 1fr); /* Two columns */
+		}
 	}
 	.work-experience-list {
-		width: 50%;
+		width: 100%; /* Allow list to scale within container */
+		box-sizing: border-box; /* Include padding/border in element's total width */
+		overflow-x: hidden; /* Prevent list content from overflowing */
 	}
 	.headline {
-		text-align: right;
+		text-align: center;
 	}
 	.work-item {
 		border-bottom: 1px solid #f0eded;
@@ -50,8 +65,9 @@
 	.work-item:not(:first-of-type) {
 		padding-top: 16px;
 	}
-	.work-item p {
-		margin-bottom: 0;
+	.work-item {
+		word-wrap: break-word; /* Break long words that could overflow */
+		overflow-wrap: break-word; /* Compatibility for word breaking */
 	}
 	.company-and-date {
 		display: flex;
