@@ -75,11 +75,10 @@ interface ProcessedProject {
   name: string,
   company: string,
   dateAccomplished: string,
-  content: string,
   stack: string[];
   projectImageUrl: string;
   slug: string;
-  content: Array<ProcessedImageContent | ProcessedTextContent>
+  content: (ProcessedTextContent | ProcessedImageContent)[];
 }
 
 interface ProcessedTextContent {

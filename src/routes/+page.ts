@@ -1,5 +1,6 @@
 
 import sanityClient from '$lib/utils/sanity';
+import { processProjectEntries } from '$lib/utils/sanity';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
@@ -8,15 +9,14 @@ export const load: PageLoad = async () => {
 
     );
 
-    const rawprojects: SanityProject[] = await sanityClient.fetch(
+    const rawProjects: SanityProject[] = await sanityClient.fetch(
         '*[_type == "project"]'
     );
 
-const projects = rawprojects.map(processProjectEntries);
+const projects = rawProjects.map(processProjectEntries);
 
-
-
-    return {
-        workExperience
+return {
+        workExperience,
+        projects
     }
 }

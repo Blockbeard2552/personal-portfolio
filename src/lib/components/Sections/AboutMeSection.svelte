@@ -4,7 +4,7 @@
 	import { goto } from '$app/navigation';
 
 	interface AboutMeProps {
-		workExperience: DevExperience[];
+		workExperience: SanityWorkExperience[];
 	}
 
 	let { workExperience }: AboutMeProps = $props();

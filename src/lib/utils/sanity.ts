@@ -15,14 +15,15 @@ export default sanityClient;
 export function processProjectEntries(rawProject: SanityProject) {
     const builder = imageUrlBuilder(sanityClient);
     const projectImageUrl = builder.image(rawProject.image).url();
+
     const processedProject: ProcessedProject = {
           name: rawProject.name,
-  company: rawProject.company,
-  dateAccomplished: rawProject.dateAccomplished,
-  stack: rawProject.stack,
-  slug: rawProject.slug,
-  projectImageUrl,
-  content: rawProject.content.map(processProjectContent)
+          company: rawProject.company,
+          dateAccomplished: rawProject.dateAccomplished,
+          stack: rawProject.stack,
+          slug: rawProject.slug,
+          projectImageUrl,
+          content: rawProject.content.map(processProjectContent),
     };
 
     return processedProject;
