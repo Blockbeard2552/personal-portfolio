@@ -59,7 +59,7 @@
 			</div>
 		{:else if showErrorMessage}
 			<h3>
-				We seem to be having trouble with our server at the moment. Please send me an email directl
+				We seem to be having trouble with our server at the moment. Please send me an email directly
 				to <a class="link" href="mailto:joey.stephens524@gmail.com">joey.stephens524@gmail.com</a>"
 			</h3>
 		{:else}
