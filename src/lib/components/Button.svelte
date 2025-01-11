@@ -6,10 +6,11 @@
 		onclick: (e: MouseEvent) => void | (() => void);
 		className?: string;
 	}
+
 	let { children, className, ...props }: ButtonProps = $props();
 </script>
 
-<button class={`btn ${className}`}>
+<button class={`btn ${className}`} {...props}>
 	{@render children()}
 </button>
 

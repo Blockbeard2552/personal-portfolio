@@ -3,7 +3,7 @@
 	import { Button } from '$components';
 
 	function onclick() {
-		goto('/#contact-form');
+		goto('/#contact-form'), console.log('clicked');
 	}
 </script>
 
