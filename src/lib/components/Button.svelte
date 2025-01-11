@@ -27,4 +27,9 @@
 		cursor: pointer;
 		transition: all 0.3s ease-in-out;
 	}
+
+	.nav-bar {
+		padding: 10px 24px;
+		font-size: 20px;
+	}
 </style>
