@@ -13,7 +13,7 @@
 	$inspect(data);
 </script>
 
-<main class="default-margin">
+<main class="work-page default-margin">
 	<h4>{company}</h4>
 	<div class="underscore"></div>
 	<h2 class="mb-s">{name}</h2>
