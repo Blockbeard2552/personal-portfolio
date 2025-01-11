@@ -1,0 +1,111 @@
+<script lang="ts">
+	import { Button, SectionHeadline } from '$components';
+
+	function onSubmit(event: Event) {
+		event.preventDefault();
+		console.log(event);
+	}
+</script>
+
+<section class="mt-l">
+	<SectionHeadline sectionName="contact-form">Let's Talk</SectionHeadline>
+	<div class="form-container default-margin mt-m">
+		<form>
+			<input class="text-input mb-m" placeholder="Your Name" />
+			<input class="text-input mb-m" placeholder="Your Email" />
+			<textarea class="textarea mb-m" placeholder="Let me know how I can help you."></textarea>
+			<Button onclick={onSubmit}>Submit</Button>
+		</form>
+		<div class="form-text">
+			<h3 class="bold mb-s">Talk to me about your project</h3>
+			<p>
+				I'm available for freelance work. If you have a project that you want to get started, think
+				you need my help with something, or just fancy saying hi, then get in touch.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		padding: 140px;
+	}
+
+	.form-container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.form-text {
+		width: 39%;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 45%;
+	}
+
+	form * {
+		font-size: 20px;
+		font-family: 'Inter Tight', sans-serif;
+		font-weight: 500;
+		color: black;
+	}
+
+	.textarea,
+	input {
+		background-color: rgba(0, 0, 0, 0.035);
+		border: none;
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 10px;
+		width: 100%;
+		outline: none;
+		border: none;
+	}
+
+	input {
+		height: 48px;
+	}
+
+	textarea {
+		height: 200px;
+		margin-bottom: 40px;
+	}
+
+	textarea::placeholder input::placeholder {
+		font-size: 20px;
+		font-weight: 400;
+	}
+
+	.input-error {
+		background-color: rgba(223, 87, 87, 0.667);
+	}
+
+	.input-error::placeholder {
+		color: white;
+	}
+
+	.spinner {
+		border: 4px solid rgba(0, 0, 0, 0.1);
+		border-left-color: black;
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		margin-right: 10px;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.spinner-container {
+		display: flex;
+		align-items: center;
+	}
+</style>

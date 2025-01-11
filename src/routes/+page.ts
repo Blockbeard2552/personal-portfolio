@@ -1,4 +1,5 @@
 
+
 import sanityClient from '$lib/utils/sanity';
 import { processProjectEntries } from '$lib/utils/sanity';
 import type { PageLoad } from './$types';
@@ -13,10 +14,17 @@ export const load: PageLoad = async () => {
         '*[_type == "project"]'
     );
 
+    const skills: Skill[] = await sanityClient.fetch(
+        `*[_type == 'skills'][0].skillsList`
+    );
+
+
+
 const projects = rawProjects.map(processProjectEntries);
 
 return {
         workExperience,
-        projects
+        projects,
+        skills
     }
 }
