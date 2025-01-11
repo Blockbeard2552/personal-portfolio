@@ -13,8 +13,8 @@ export async function POST({ request }) {
     }
 
     const message = {
-        to: ['delivered@resend.dev'],
-        from: 'Joey <onboarding@resend.dev>',
+        to: 'joey.stephens524@gmail.com',
+        from: 'joey.stephens524@gmail.com',
         subject: 'Portfolio Contact Form',
         html: `<p>Name: ${contactName}</p><p>Email: ${contactMail}</p><p>Project Info: ${projectInfo}</p>`,
     };
