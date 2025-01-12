@@ -2,14 +2,17 @@ import { RESEND_API_KEY } from '$env/static/private';
 import { Resend } from 'resend';
 import { json } from '@sveltejs/kit';
 
-
 export async function POST({ request }) {
     const resend = new Resend(RESEND_API_KEY);
-    const { contactName, contactMail, projectInfo } = 
-    await request.json();
+    const { contactName, contactMail, projectInfo } = await request.json();
 
     if (!contactName || !contactMail || !projectInfo) {
         return json({ message: "Missing required fields" }, { status: 400 });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactMail)) {
+        return json({ message: "Invalid email format" }, { status: 400 });
     }
 
     const message = {
@@ -23,6 +26,7 @@ export async function POST({ request }) {
         await resend.emails.send(message);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
-        return json({ err }, { status: 500 });
+        console.error('Error response from Resend:');
+        return json({err}, { status: 500 });
     }
 }
