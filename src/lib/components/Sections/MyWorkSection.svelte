@@ -53,9 +53,16 @@
 	}
 
 	.more-projects-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr); /* 2-column grid by default */
+		gap: 16px; /* Adds spacing between the grid items */
+	}
+
+	/* Mobile: Make the grid 1 column */
+	@media (max-width: 768px) {
+		.more-projects-container {
+			grid-template-columns: 1fr; /* Switch to 1-column layout */
+		}
 	}
 
 	.more-projects-container img {
@@ -67,10 +74,11 @@
 	}
 
 	.project {
-		width: 48%;
+		width: 100%;
 	}
 
 	.project-info {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -78,7 +86,7 @@
 
 	.btn-to-article {
 		display: block;
-		font-size: 40px;
+		font-size: 4vmax;
 		border: 1px solid black;
 		border-radius: 40px;
 		padding: 0px 24px;

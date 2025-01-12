@@ -43,8 +43,10 @@
 <style>
 	.content-container {
 		display: grid;
+		grid-template-columns: 1fr 1fr; /* Default 2-column grid for larger screens */
+		gap: 20px; /* Add space between the columns */
 		justify-content: space-between;
-		align-items: strertch;
+		align-items: center;
 	}
 
 	.image {
@@ -58,5 +60,55 @@
 	.text {
 		width: 100%;
 		text-align: left;
+	}
+
+	/* Responsive styles */
+	@media (max-width: 1024px) {
+		.content-container {
+			grid-template-columns: 1fr; /* Switch to single-column layout for smaller screens */
+		}
+
+		.image {
+			width: 100%; /* Ensure the image is responsive */
+			max-height: 400px; /* Limit height on smaller screens */
+			object-fit: cover; /* Cover the available space */
+		}
+
+		.text {
+			text-align: justify; /* Improve readability on smaller screens */
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-me {
+			padding: 20px; /* Reduce padding for smaller devices */
+		}
+
+		.image {
+			max-height: 300px; /* Further limit image height */
+		}
+
+		.text p {
+			font-size: 16px; /* Adjust font size for smaller screens */
+			line-height: 1.6; /* Improve text readability */
+		}
+
+		.text {
+			margin-top: 20px; /* Add some spacing above the text on mobile */
+		}
+	}
+
+	@media (max-width: 480px) {
+		.image {
+			max-height: 200px; /* Ensure the image doesn't take up too much space on very small screens */
+		}
+
+		.text p {
+			font-size: 14px; /* Further reduce font size for smaller screens */
+		}
+
+		Button {
+			font-size: 14px; /* Adjust button size for mobile */
+		}
 	}
 </style>

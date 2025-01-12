@@ -98,45 +98,47 @@
 
 <style>
 	section {
-		padding: 140px;
+		padding: 100px 20px; /* Adjust padding for smaller screens */
 	}
 
 	.form-container {
 		display: flex;
+		flex-wrap: wrap; /* Allow the form and text to stack */
 		justify-content: space-between;
+		gap: 20px; /* Add spacing between elements */
 	}
 
 	.form-text {
-		width: 39%;
+		width: 39%; /* Default width for larger screens */
 	}
 
 	form {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		width: 45%;
+		width: 45%; /* Default width for larger screens */
 	}
 
 	form * {
-		font-size: 20px;
+		font-size: 18px; /* Slightly smaller font for better readability on mobile */
 		font-family: 'Inter Tight', sans-serif;
 		font-weight: 500;
 		color: black;
 	}
 
-	input {
+	input,
+	textarea {
 		background-color: rgba(0, 0, 0, 0.035);
 		border: none;
 		border-radius: 10px;
 		padding: 10px;
-		margin-bottom: 10px;
 		width: 100%;
 		outline: none;
-		border: none;
 	}
 
 	input {
 		height: 48px;
+		margin-bottom: 10px;
 	}
 
 	textarea {
@@ -144,8 +146,9 @@
 		margin-bottom: 40px;
 	}
 
-	textarea::placeholder input::placeholder {
-		font-size: 20px;
+	textarea::placeholder,
+	input::placeholder {
+		font-size: 18px;
 		font-weight: 400;
 	}
 
@@ -176,5 +179,35 @@
 	.spinner-container {
 		display: flex;
 		align-items: center;
+	}
+
+	/* Responsive Styles */
+	@media (max-width: 768px) {
+		.form-container {
+			flex-direction: column; /* Stack form and text vertically */
+		}
+
+		.form-text,
+		form {
+			width: 100%; /* Take full width on smaller screens */
+		}
+
+		textarea {
+			height: 150px; /* Reduce height for smaller screens */
+		}
+	}
+
+	@media (max-width: 480px) {
+		form * {
+			font-size: 16px; /* Further reduce font size for smaller devices */
+		}
+
+		input {
+			height: 40px; /* Adjust input height */
+		}
+
+		textarea {
+			height: 120px; /* Further reduce textarea height */
+		}
 	}
 </style>
