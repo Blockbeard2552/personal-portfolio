@@ -18,7 +18,7 @@
 			// send data to backend
 
 			isLoading = true;
-			const response = await fetch('/api/send-email', {
+			const response = await fetch('/api/send-mail', {
 				method: 'POST',
 				body: JSON.stringify({
 					contactName,
@@ -124,7 +124,6 @@
 		color: black;
 	}
 
-	.textarea,
 	input {
 		background-color: rgba(0, 0, 0, 0.035);
 		border: none;
