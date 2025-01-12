@@ -8,10 +8,10 @@
 </script>
 
 <section class="hero-section default-margin">
-	<h3>Hello! I'm Joey</h3>
+	<h3>Joseph D. Stephens</h3>
 	<div class="underscore mb-m"></div>
-	<h1 class="hero-title">Web Developer</h1>
-	<h1 class="hero-subtitle">business management systems and interactive user experiences.</h1>
+	<h1 class="hero-title">Digital Marketing, Web Design, and Web Development</h1>
+	<h1 class="hero-subtitle">I help businesses succeed online</h1>
 	<Button {onclick}>Let's Talk!</Button>
 </section>
 

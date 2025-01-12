@@ -34,7 +34,7 @@
 				{#if block.type === 'text'}
 					<svelte:element this={getTagFromStyle(block.style)}>{block.textToRender}</svelte:element>
 				{:else}
-					<img class="content-image" src={block.url} alt="" />}
+					<img class="content-image" src={block.url} alt="" />
 				{/if}
 			{/each}
 		</div>

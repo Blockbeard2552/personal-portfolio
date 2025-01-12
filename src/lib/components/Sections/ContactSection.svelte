@@ -89,8 +89,8 @@
 		<div class="form-text">
 			<h3 class="bold mb-s">Talk to me about your project</h3>
 			<p>
-				I'm available for freelance work. If you have a project that you want to get started, think
-				you need my help with something, or just fancy saying hi, then get in touch.
+				I always get excited about new projects and the oppertunity they bring. If you have any
+				questions about a project or just want to chat, don't hesitate to get in touch.
 			</p>
 		</div>
 	</div>

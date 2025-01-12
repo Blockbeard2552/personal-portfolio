@@ -20,19 +20,20 @@
 		<img class="image" src={image} alt="me" />
 		<div class="text">
 			<p>
-				Hey, I'm Joey, the driving force behind my freelancing agency specializing in web
-				development and business management systems and processes.
+				Hey, my name is Joseoh, the driving force behind my freelancing agency specializing in
+				digital marketing and web development.
 			</p>
 			<p>
 				With years of hands-on experience tackling real-world business management and coding
 				challenges while meeting diverse client needs, I've built a deep understanding of the tech
-				landscape. I have developed a diverse set of technologies to solve complex problems at any
-				scale.
+				landscape. I have developed a diverse set of technologies and honed the skills required to
+				solve complex problems for businesses and to help them get the most out of the tools and
+				assets available to us today.
 			</p>
 			<p>
-				Through my courses, I’m committed to sharing the insights and lessons I’ve learned in the
-				field, so you can skip the pitfalls and fast-track your development journey. If you're eager
-				to learn from real-world experience and practical know-how, let's dive in together.
+				I deeply value the relationship I have with my clients and the importance of their
+				relastionship they have with their customers. I enjoy working with them to understand their
+				needs and to help them achieve their goals.
 			</p>
 			<Button className="mt-m" {onclick}>Tell Me About Your Project!</Button>
 		</div>

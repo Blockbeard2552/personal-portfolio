@@ -14,7 +14,7 @@ export async function POST({ request }) {
 
     const message = {
         to: 'joey.stephens524@gmail.com',
-        from: 'joey.stephens524@gmail.com',
+        from: 'owner@josephdstephens.com',
         subject: 'Portfolio Contact Form',
         html: `<p>Name: ${contactName}</p><p>Email: ${contactMail}</p><p>Project Info: ${projectInfo}</p>`,
     };
