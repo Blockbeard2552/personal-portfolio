@@ -20,13 +20,13 @@
 <nav class="navbar">
 	<a href="/" class="logo">JDS</a>
 
-	<button class="menu-toggle" on:click={toggleMenu} aria-label="Toggle navigation">
+	<button class="menu-toggle" onclick={toggleMenu} aria-label="Toggle navigation">
 		<span class="menu-icon">{isMenuOpen ? '✖' : '☰'}</span>
 	</button>
 
 	<div class={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-		<a href="/#about-me" class="nav-link" on:click={closeMenu}>About Me</a>
-		<a href="/#my-work" class="nav-link" on:click={closeMenu}>My Work</a>
+		<a href="/#about-me" class="nav-link" onclick={closeMenu}>About Me</a>
+		<a href="/#my-work" class="nav-link" onclick={closeMenu}>My Work</a>
 		<Button
 			className="nav-bar"
 			onclick={() => {
