@@ -1,9 +1,10 @@
-import { RESEND_API_KEY } from '$env/static/private';
-import { Resend } from 'resend';
+import { SENDGRID_API_KEY } from '$env/static/private';
+import sgMail from '@sendgrid/mail';
 import { json } from '@sveltejs/kit';
 
+sgMail.setApiKey(SENDGRID_API_KEY);
+
 export async function POST({ request }) {
-    const resend = new Resend(RESEND_API_KEY);
     const { contactName, contactMail, projectInfo } = await request.json();
 
     if (!contactName || !contactMail || !projectInfo) {
@@ -17,13 +18,13 @@ export async function POST({ request }) {
 
     const message = {
         to: 'joey.stephens524@gmail.com',
-        from: 'owner@josephdstephens.com',
+        from: 'owner@em3536.josephdstephens.com',
         subject: 'Portfolio Contact Form',
         html: `<p>Name: ${contactName}</p><p>Email: ${contactMail}</p><p>Project Info: ${projectInfo}</p>`,
     };
 
     try {
-        await resend.emails.send(message);
+        await sgMail.send(message);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
         console.error('Error response from Resend:');
