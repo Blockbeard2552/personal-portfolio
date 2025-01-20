@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { SectionHeadline } from '$components';
-	import type { Processed } from 'svelte/compiler';
 
 	interface MyWorkSectionProps {
 		projects: ProcessedProject[];

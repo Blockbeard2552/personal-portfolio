@@ -107,9 +107,5 @@
 		.text p {
 			font-size: 14px; /* Further reduce font size for smaller screens */
 		}
-
-		Button {
-			font-size: 14px; /* Adjust button size for mobile */
-		}
 	}
 </style>
