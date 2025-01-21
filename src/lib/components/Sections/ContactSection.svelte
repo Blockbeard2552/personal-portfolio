@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Button, SectionHeadline } from '$components';
 
-	let contactName = $state('Joseph Stephens');
-	let contactEmail = $state('joey.stephens524@gmail.com');
-	let projectInfo = $state('Something amazing');
+	let contactName = $state('');
+	let contactEmail = $state('');
+	let projectInfo = $state('');
 	let isFormInvalid = $state(false);
 	let isEmailSent = $state(false);
 	let showErrorMessage = $state(false);
@@ -16,7 +16,6 @@
 
 		if (contactName && contactEmail && projectInfo) {
 			// send data to backend
-
 			isLoading = true;
 			const response = await fetch('/api/send-mail', {
 				method: 'POST',
