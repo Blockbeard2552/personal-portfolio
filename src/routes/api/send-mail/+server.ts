@@ -5,14 +5,14 @@ import { json } from '@sveltejs/kit';
 sgMail.setApiKey(SENDGRID_API_KEY);
 
 export async function POST({ request }) {
-    const { contactName, contactMail, projectInfo } = await request.json();
+    const { contactName, contactEmail, projectInfo } = await request.json();
 
-    if (!contactName || !contactMail || !projectInfo) {
+    if (!contactName || !contactEmail || !projectInfo) {
         return json({ message: "Could not send email. Missing data." }, { status: 400 });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(contactMail)) {
+    if (!emailRegex.test(contactEmail)) {
         return json({ message: "Invalid email format" }, { status: 400 });
     }
 
@@ -22,7 +22,7 @@ export async function POST({ request }) {
         subject: 'Portfolio Contact Form',
         html: `Someone sent you a contact form from your portfolio. <br />
         Name: ${contactName}
-        Email: ${contactMail}
+        Email: ${contactEmail}
         Project Info: ${projectInfo}`,
     };
 
