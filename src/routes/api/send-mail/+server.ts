@@ -8,7 +8,7 @@ export async function POST({ request }) {
     const { contactName, contactMail, projectInfo } = await request.json();
 
     if (!contactName || !contactMail || !projectInfo) {
-        return json({ message: "Missing required fields" }, { status: 400 });
+        return json({ message: "Could not send email. Missing data." }, { status: 400 });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,14 +20,17 @@ export async function POST({ request }) {
         to: 'joey.stephens524@gmail.com',
         from: 'owner@em3536.josephdstephens.com',
         subject: 'Portfolio Contact Form',
-        html: `<p>Name: ${contactName}</p><p>Email: ${contactMail}</p><p>Project Info: ${projectInfo}</p>`,
+        html: `Someone sent you a contact form from your portfolio. <br />
+        Name: ${contactName}
+        Email: ${contactMail}
+        Project Info: ${projectInfo}`,
     };
 
     try {
         await sgMail.send(message);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
-        console.error('Error response from Resend:');
+        console.error('Error response from SendGrid:');
         return json({err}, { status: 500 });
     }
 }
