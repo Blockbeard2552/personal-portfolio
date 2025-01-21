@@ -21,7 +21,7 @@
 					<h3 class="semi-bold">{mainProject.name}</h3>
 					<p class="company dark-grey">{mainProject.company}</p>
 				</div>
-				<a href={`/work/${mainProject.slug}`} class="btn-to-article">➢</a>
+				<a href={`/work/${mainProject.slug}`} class="btn-to-article">→</a>
 			</div>
 		</article>
 		<div class="more-projects-container">
@@ -35,7 +35,7 @@
 							<h3 class="semi-bold">{project.name}</h3>
 							<p class="company dark-grey">{project.company}</p>
 						</div>
-						<a href={`/work/${project.slug}`} class="btn-to-article">➢</a>
+						<a href={`/work/${project.slug}`} class="btn-to-article">→</a>
 					</div>
 				</article>
 			{/each}
