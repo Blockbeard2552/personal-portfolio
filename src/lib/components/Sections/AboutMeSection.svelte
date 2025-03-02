@@ -20,20 +20,19 @@
 		<img class="image" src={image} alt="me" />
 		<div class="text">
 			<p>
-				Hey, my name is Joseoh, the driving force behind my freelancing agency specializing in
+				Hey, my name is Joseph, I am the driving force behind my freelancing agency specializing in
 				digital marketing and web development.
 			</p>
 			<p>
-				With years of hands-on experience tackling real-world business management and coding
-				challenges while meeting diverse client needs, I've built a deep understanding of the tech
-				landscape. I have developed a diverse set of technologies and honed the skills required to
-				solve complex problems for businesses and to help them get the most out of the tools and
-				assets available to us today.
+				With years of hands-on experience in business management and coding, I have developed a deep
+				understanding of the tech landscape. I have gained extensive knowledge and expertise across
+				a diverse range of technologies, refining the skills needed to solve complex business
+				challenges. My goal is to help businesses maximize the potential of the tools and assets
+				available to them today.
 			</p>
 			<p>
-				I deeply value the relationship I have with my clients and the importance of their
-				relastionship they have with their customers. I enjoy working with them to understand their
-				needs and to help them achieve their goals.
+				I deeply value the relationships I have with my clients and I understand the importance of
+				the relastionships they have with their customers.
 			</p>
 			<Button className="mt-m" {onclick}>Tell Me About Your Project!</Button>
 		</div>
