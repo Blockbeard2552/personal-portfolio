@@ -88,7 +88,7 @@
 		<div class="form-text">
 			<h3 class="bold mb-s">Talk to me about your project</h3>
 			<p>
-				I always get excited about new projects and the oppertunity they bring. If you have any
+				I always get excited about new projects and the opportunity they bring. If you have any
 				questions about a project or just want to chat, don't hesitate to get in touch.
 			</p>
 		</div>
