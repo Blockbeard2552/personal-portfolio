@@ -3,11 +3,11 @@
 	import { Button } from '$components';
 
 	function onclick() {
-		goto('/#contact-form'), console.log('clicked');
+		goto('/#contact-form');
 	}
 </script>
 
-<section class="hero-section default-margin">
+<section class="hero-section default-margin" aria-label="Hero introduction">
 	<h3>Joseph D. Stephens</h3>
 	<div class="underscore mb-m"></div>
 	<h1 class="hero-title">Digital Marketing, Web Design, and Web Development</h1>

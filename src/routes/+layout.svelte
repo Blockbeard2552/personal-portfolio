@@ -5,6 +5,27 @@
 	let { children } = $props();
 </script>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
 <Header />
-{@render children()}
+<main id="main-content" tabindex="-1">
+	{@render children()}
+</main>
 <Footer />
+
+<style>
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 6px;
+		background: #000;
+		color: #fff;
+		padding: 8px;
+		z-index: 100;
+		text-decoration: none;
+		border-radius: 4px;
+	}
+	
+	.skip-link:focus {
+		top: 6px;
+	}
+</style>

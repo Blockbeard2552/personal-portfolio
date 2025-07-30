@@ -2,7 +2,6 @@ import { MAILERSEND_API_KEY } from '$env/static/private';
 import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
 import { json } from '@sveltejs/kit';
 
-console.log('API Key loaded:', MAILERSEND_API_KEY ? 'Yes' : 'No');
 const mailerSend = new MailerSend({
     apiKey: MAILERSEND_API_KEY,
 });
@@ -53,8 +52,7 @@ This email was sent from your portfolio contact form at josephdstephens.com
         .setText(textContent);
 
     try {
-        const response = await mailerSend.email.send(emailParams);
-        console.log('MailerSend response:', response);
+        await mailerSend.email.send(emailParams);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
         console.error('MailerSend Error:', err);

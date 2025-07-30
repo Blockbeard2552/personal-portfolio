@@ -15,6 +15,9 @@
 				>YouTube</a
 			>
 		</div>
+		<div class="footer-legal">
+			<a href="/privacy" class="privacy-link">Privacy Policy</a>
+		</div>
 		<p>Copyright © 2025 Joseph D. Stephens</p>
 	</div>
 </footer>
@@ -29,5 +32,20 @@
 
 	.footer-link {
 		margin-right: 0 10px;
+	}
+
+	.footer-legal {
+		margin-bottom: 12px;
+	}
+
+	.privacy-link {
+		color: #ccc;
+		text-decoration: none;
+		font-size: 14px;
+	}
+
+	.privacy-link:hover {
+		color: white;
+		text-decoration: underline;
 	}
 </style>

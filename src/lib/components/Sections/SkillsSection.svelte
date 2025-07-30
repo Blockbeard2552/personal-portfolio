@@ -8,7 +8,7 @@
 	let { skills }: SkillsSectionProps = $props();
 </script>
 
-<section class="mt-l">
+<section class="mt-l" aria-labelledby="Skills">
 	<SectionHeadline sectionName="Skills">Skills</SectionHeadline>
 	<div class="wrapper default-margin">
 		<div class="skills-container mt-m">

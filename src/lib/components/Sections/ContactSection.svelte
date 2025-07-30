@@ -9,8 +9,6 @@
 	let showErrorMessage = $state(false);
 	let isLoading = $state(false);
 
-	$inspect(isEmailSent);
-
 	async function onSubmit(event: Event) {
 		event.preventDefault();
 
@@ -44,7 +42,7 @@
 	});
 </script>
 
-<section class="mt-l">
+<section class="mt-l" aria-labelledby="contact-form">
 	<SectionHeadline sectionName="contact-form">Let's Talk</SectionHeadline>
 	<div class="form-container default-margin mt-m">
 		{#if isEmailSent}
@@ -62,26 +60,71 @@
 				to <a class="link" href="mailto:joey.stephens524@gmail.com">joey.stephens524@gmail.com</a>"
 			</h3>
 		{:else}
-			<form>
-				<input
-					class={`text-input mb-m`}
-					class:input-error={isFormInvalid && !Boolean(contactName.length)}
-					placeholder="Your Name"
-					bind:value={contactName}
-				/>
-				<input
-					class="text-input mb-m"
-					class:input-error={isFormInvalid && !Boolean(contactEmail.length)}
-					placeholder="Your Email"
-					bind:value={contactEmail}
-				/>
-				<textarea
-					class="textarea mb-m"
-					class:input-error={isFormInvalid && !Boolean(projectInfo.length)}
-					placeholder="Let me know how I can help you."
-					bind:value={projectInfo}
-				></textarea>
-				<Button onclick={onSubmit}>Submit</Button>
+			<form onsubmit={onSubmit} novalidate aria-label="Contact form">
+				{#if isFormInvalid}
+					<div class="error-message" role="alert" aria-live="polite">
+						Please fill in all required fields.
+					</div>
+				{/if}
+				
+				<div class="input-group">
+					<label for="contact-name" class="visually-hidden">Your Name (required)</label>
+					<input
+						id="contact-name"
+						type="text"
+						class={`text-input mb-m`}
+						class:input-error={isFormInvalid && !Boolean(contactName.length)}
+						placeholder="Your Name"
+						required
+						aria-required="true"
+						aria-invalid={isFormInvalid && !Boolean(contactName.length)}
+						aria-describedby={isFormInvalid && !Boolean(contactName.length) ? 'name-error' : undefined}
+						bind:value={contactName}
+					/>
+					{#if isFormInvalid && !Boolean(contactName.length)}
+						<span id="name-error" class="error-text" role="alert">Name is required</span>
+					{/if}
+				</div>
+				
+				<div class="input-group">
+					<label for="contact-email" class="visually-hidden">Your Email Address (required)</label>
+					<input
+						id="contact-email"
+						type="email"
+						class="text-input mb-m"
+						class:input-error={isFormInvalid && !Boolean(contactEmail.length)}
+						placeholder="Your Email"
+						required
+						aria-required="true"
+						aria-invalid={isFormInvalid && !Boolean(contactEmail.length)}
+						aria-describedby={isFormInvalid && !Boolean(contactEmail.length) ? 'email-error' : undefined}
+						bind:value={contactEmail}
+					/>
+					{#if isFormInvalid && !Boolean(contactEmail.length)}
+						<span id="email-error" class="error-text" role="alert">Email is required</span>
+					{/if}
+				</div>
+				
+				<div class="input-group">
+					<label for="project-info" class="visually-hidden">Project Information (required)</label>
+					<textarea
+						id="project-info"
+						class="textarea mb-m"
+						class:input-error={isFormInvalid && !Boolean(projectInfo.length)}
+						placeholder="Let me know how I can help you."
+						required
+						aria-required="true"
+						aria-invalid={isFormInvalid && !Boolean(projectInfo.length)}
+						aria-describedby={isFormInvalid && !Boolean(projectInfo.length) ? 'project-error' : undefined}
+						bind:value={projectInfo}
+					></textarea>
+					{#if isFormInvalid && !Boolean(projectInfo.length)}
+						<span id="project-error" class="error-text" role="alert">Project information is required</span>
+					{/if}
+				</div>
+				
+				<Button onclick={onSubmit} type="submit" aria-describedby="submit-help">Submit</Button>
+				<span id="submit-help" class="visually-hidden">Submit the contact form to send your message</span>
 			</form>
 		{/if}
 
@@ -178,6 +221,40 @@
 	.spinner-container {
 		display: flex;
 		align-items: center;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
+	.input-group {
+		position: relative;
+		width: 100%;
+	}
+
+	.error-message {
+		background-color: #fee;
+		border: 1px solid #fcc;
+		color: #c33;
+		padding: 12px;
+		border-radius: 8px;
+		margin-bottom: 16px;
+		font-weight: 500;
+	}
+
+	.error-text {
+		color: #c33;
+		font-size: 14px;
+		font-weight: 500;
+		margin-top: 4px;
+		display: block;
 	}
 
 	/* Responsive Styles */

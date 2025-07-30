@@ -14,10 +14,10 @@
 	}
 </script>
 
-<section class="about-me mt-l">
+<section class="about-me mt-l" aria-labelledby="about-me">
 	<SectionHeadline sectionName="about-me">About Me</SectionHeadline>
 	<div class="mt-m content-container default-margin">
-		<img class="image" src={image} alt="me" />
+		<img class="image" src={image} alt="Joseph Stephens - Full Stack Developer" />
 		<div class="text">
 			<p>
 				Hey, my name is Joseph, I am the driving force behind my freelancing agency specializing in

@@ -15,18 +15,37 @@
 	function closeMenu() {
 		isMenuOpen = false;
 	}
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && isMenuOpen) {
+			closeMenu();
+		}
+	}
 </script>
 
-<nav class="navbar">
+<nav class="navbar" aria-label="Main navigation">
 	<a href="/" class="logo">JDS</a>
 
-	<button class="menu-toggle" onclick={toggleMenu} aria-label="Toggle navigation">
-		<span class="menu-icon">{isMenuOpen ? '✖' : '☰'}</span>
+	<button 
+		class="menu-toggle" 
+		onclick={toggleMenu} 
+		onkeydown={handleKeyDown}
+		aria-label="Toggle navigation menu"
+		aria-expanded={isMenuOpen}
+		aria-controls="main-menu"
+	>
+		<span class="menu-icon" aria-hidden="true">{isMenuOpen ? '✖' : '☰'}</span>
 	</button>
 
-	<div class={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-		<a href="/#about-me" class="nav-link" onclick={closeMenu}>About Me</a>
-		<a href="/#my-work" class="nav-link" onclick={closeMenu}>My Work</a>
+	<div 
+		id="main-menu"
+		class={`navbar-links ${isMenuOpen ? 'open' : ''}`}
+		role="menu"
+		aria-hidden={!isMenuOpen}
+		onkeydown={handleKeyDown}
+	>
+		<a href="/#about-me" class="nav-link" onclick={closeMenu} role="menuitem">About Me</a>
+		<a href="/#my-work" class="nav-link" onclick={closeMenu} role="menuitem">My Work</a>
 		<Button
 			className="nav-bar"
 			onclick={() => {
@@ -54,6 +73,11 @@
 		font-weight: bold;
 		color: black;
 		text-decoration: none;
+	}
+
+	.logo:focus {
+		outline: 2px solid #007acc;
+		outline-offset: 2px;
 	}
 
 	.navbar-links {
@@ -88,6 +112,12 @@
 		text-decoration: underline;
 	}
 
+	.nav-link:focus {
+		outline: 2px solid #007acc;
+		outline-offset: 2px;
+		text-decoration: underline;
+	}
+
 	.nav-bar {
 		width: 100%; /* Full width button for mobile */
 		text-align: center;
@@ -99,6 +129,11 @@
 		border: none;
 		font-size: 28px;
 		cursor: pointer;
+	}
+
+	.menu-toggle:focus {
+		outline: 2px solid #007acc;
+		outline-offset: 2px;
 	}
 
 	.menu-icon {

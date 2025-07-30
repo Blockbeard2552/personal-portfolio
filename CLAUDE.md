@@ -39,7 +39,15 @@ This is a personal portfolio website built with SvelteKit 5, TypeScript, and Tai
 - **Content Types**: `devExperience`, `project`, `skills`
 - **Image Processing**: Uses `@sanity/image-url` for optimized image URLs
 
+### Email Integration
+- **MailerSend**: Contact form sends emails via MailerSend API
+- **Validation**: Email format validation and required field checks
+- **Environment**: Uses `MAILERSEND_API_KEY` from private environment variables
 
+## Security Notes
+- **Environment Variables**: Never commit `.env` files - use Vercel environment variables for production
+- **API Keys**: Regenerate API keys if accidentally exposed  
+- **Sensitive Data**: Keep all API keys, secrets, and credentials in environment variables only
 
 ## Configuration
 - **Vercel Adapter**: Configured for Vercel deployment

@@ -10,14 +10,68 @@
 			return style;
 		}
 	}
-	$inspect(data);
+	
+	// Generate description from content
+	const description = content
+		.filter(block => block.type === 'text')
+		.slice(0, 2)
+		.map(block => block.textToRender)
+		.join(' ')
+		.slice(0, 160) + '...';
+	
+	const pageTitle = `${name} - ${company} | Joseph Stephens Portfolio`;
+	const techStackString = stack.join(', ');
 </script>
+
+<svelte:head>
+	<title>{pageTitle}</title>
+	<meta name="description" content="{description}" />
+	<meta name="keywords" content="Joseph Stephens, {company}, {name}, {techStackString}, Software Project, Portfolio" />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://josephdstephens.com/work/{data.project.slug}" />
+	<meta property="og:title" content="{pageTitle}" />
+	<meta property="og:description" content="{description}" />
+	<meta property="og:image" content="{projectImageUrl}" />
+	<meta property="og:article:author" content="Joseph Stephens" />
+	<meta property="og:article:published_time" content="{dateAccomplished}" />
+	
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://josephdstephens.com/work/{data.project.slug}" />
+	<meta property="twitter:title" content="{pageTitle}" />
+	<meta property="twitter:description" content="{description}" />
+	<meta property="twitter:image" content="{projectImageUrl}" />
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://josephdstephens.com/work/{data.project.slug}" />
+	
+	<!-- Structured Data -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "CreativeWork",
+			"name": "{name}",
+			"description": "{description}",
+			"author": {
+				"@type": "Person",
+				"name": "Joseph Stephens"
+			},
+			"dateCreated": "{dateAccomplished}",
+			"url": "https://josephdstephens.com/work/{data.project.slug}",
+			"image": "{projectImageUrl}",
+			"keywords": "{techStackString}",
+			"about": "{company}"
+		}
+	</script>
+</svelte:head>
 
 <main class="work-page default-margin">
 	<h4>{company}</h4>
 	<div class="underscore"></div>
 	<h2 class="mb-s">{name}</h2>
-	<img class="project-image" src={projectImageUrl} alt="" />
+	<img class="project-image" src={projectImageUrl} alt="{name} project screenshot for {company}" />
 	<div class="project-container">
 		<div class="meta-data">
 			<h3 class="mb-s">Date</h3>
@@ -34,7 +88,7 @@
 				{#if block.type === 'text'}
 					<svelte:element this={getTagFromStyle(block.style)}>{block.textToRender}</svelte:element>
 				{:else}
-					<img class="content-image" src={block.url} alt="" />
+					<img class="content-image" src={block.url} alt="Project image showing details of {name}" />
 				{/if}
 			{/each}
 		</div>

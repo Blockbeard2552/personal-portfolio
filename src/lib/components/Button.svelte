@@ -3,8 +3,10 @@
 
 	interface ButtonProps {
 		children: Snippet;
-		onclick: ((e: MouseEvent) => void) | (() => void);
+		onclick?: ((e: MouseEvent) => void) | (() => void);
 		className?: string;
+		type?: 'button' | 'submit' | 'reset';
+		'aria-describedby'?: string;
 	}
 
 	let { children, className, ...props }: ButtonProps = $props();
@@ -30,6 +32,11 @@
 
 	.btn:hover {
 		background-color: #333; /* Slightly lighter black on hover */
+	}
+
+	.btn:focus {
+		outline: 2px solid #007acc;
+		outline-offset: 2px;
 	}
 
 	.btn:active {

@@ -9,7 +9,7 @@
 	const otherProjects = projects.slice(1);
 </script>
 
-<section class="mt-l">
+<section class="mt-l" aria-labelledby="my-work">
 	<SectionHeadline sectionName="my-work">My Work</SectionHeadline>
 	<div class="default-margin projects-container mt-m">
 		<article class="main-project mb-m">
