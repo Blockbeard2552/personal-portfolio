@@ -28,7 +28,7 @@ This is a personal portfolio website built with SvelteKit 5, TypeScript, and Tai
 - **Data Loading**: Page data loaded in `+page.ts` using Sanity queries
 - **Content Processing**: Raw Sanity data transformed via `processProjectEntries()` in `src/lib/utils/sanity.ts:15`
 - **Component Props**: Section components receive data as props from main page
-- **API Routes**: Contact form handled by `src/routes/api/send-mail/+server.ts`
+
 
 ### Import Aliases
 - `$components` → `src/lib/components`
@@ -39,10 +39,7 @@ This is a personal portfolio website built with SvelteKit 5, TypeScript, and Tai
 - **Content Types**: `devExperience`, `project`, `skills`
 - **Image Processing**: Uses `@sanity/image-url` for optimized image URLs
 
-### Email Integration
-- **SendGrid**: Contact form sends emails via SendGrid API
-- **Validation**: Email format validation and required field checks
-- **Environment**: Uses `SENDGRID_API_KEY` from private environment variables
+
 
 ## Configuration
 - **Vercel Adapter**: Configured for Vercel deployment

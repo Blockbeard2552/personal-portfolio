@@ -1,9 +1,11 @@
-import { SENDGRID_API_KEY } from '$env/static/private';
-import sgMail from '@sendgrid/mail';
+import { MAILERSEND_API_KEY } from '$env/static/private';
+import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
 import { json } from '@sveltejs/kit';
 
-console.log('API Key loaded:', SENDGRID_API_KEY ? 'Yes' : 'No');
-sgMail.setApiKey(SENDGRID_API_KEY);
+console.log('API Key loaded:', MAILERSEND_API_KEY ? 'Yes' : 'No');
+const mailerSend = new MailerSend({
+    apiKey: MAILERSEND_API_KEY,
+});
 
 export async function POST({ request }) {
     const { contactName, contactEmail, projectInfo } = await request.json();
@@ -17,23 +19,26 @@ export async function POST({ request }) {
         return json({ message: "Invalid email format" }, { status: 400 });
     }
 
-    const message = {
-        to: 'joey.stephens524@gmail.com',
-        from: 'owner@em3536.josephdstephens.com',
-        subject: 'Portfolio Contact Form',
-        html: `Someone sent you a contact form from your portfolio. <br />
-        Name: ${contactName}
-        Email: ${contactEmail}
-        Project Info: ${projectInfo}`,
-    };
+    const sentFrom = new Sender('leads@josephdstephens.com', 'Portfolio Contact');
+    const recipients = [new Recipient('joey.stephens524@gmail.com', 'Joey Stephens')];
+
+    const emailParams = new EmailParams()
+        .setFrom(sentFrom)
+        .setTo(recipients)
+        .setSubject('Portfolio Contact Form')
+        .setHtml(`Someone sent you a contact form from your portfolio. <br />
+        Name: ${contactName}<br />
+        Email: ${contactEmail}<br />
+        Project Info: ${projectInfo}`);
 
     try {
-        await sgMail.send(message);
+        const response = await mailerSend.email.send(emailParams);
+        console.log('MailerSend response:', response);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
-        console.error('SendGrid Error:', err);
-        if (err && typeof err === 'object' && 'response' in err && err.response && typeof err.response === 'object' && 'body' in err.response) {
-            console.error('SendGrid Error Details:', err.response.body);
+        console.error('MailerSend Error:', err);
+        if (err && typeof err === 'object' && 'response' in err && err.response) {
+            console.error('MailerSend Error Details:', err.response);
         }
         return json({ message: "Failed to send email", error: err instanceof Error ? err.message : String(err) }, { status: 500 });
     }
