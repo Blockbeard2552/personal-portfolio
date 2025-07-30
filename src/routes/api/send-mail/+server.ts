@@ -2,6 +2,7 @@ import { SENDGRID_API_KEY } from '$env/static/private';
 import sgMail from '@sendgrid/mail';
 import { json } from '@sveltejs/kit';
 
+console.log('API Key loaded:', SENDGRID_API_KEY ? 'Yes' : 'No');
 sgMail.setApiKey(SENDGRID_API_KEY);
 
 export async function POST({ request }) {
