@@ -32,6 +32,9 @@ export async function POST({ request }) {
         return json({ emailSentSuccessfully: true });
     } catch (err) {
         console.error('SendGrid Error:', err);
+        if (err && typeof err === 'object' && 'response' in err && err.response && typeof err.response === 'object' && 'body' in err.response) {
+            console.error('SendGrid Error Details:', err.response.body);
+        }
         return json({ message: "Failed to send email", error: err instanceof Error ? err.message : String(err) }, { status: 500 });
     }
 }
