@@ -30,7 +30,7 @@ export async function POST({ request }) {
         await sgMail.send(message);
         return json({ emailSentSuccessfully: true });
     } catch (err) {
-        console.error('Error response from SendGrid:');
-        return json({err}, { status: 500 });
+        console.error('SendGrid Error:', err);
+        return json({ message: "Failed to send email", error: err instanceof Error ? err.message : String(err) }, { status: 500 });
     }
 }
