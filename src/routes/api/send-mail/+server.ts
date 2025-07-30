@@ -19,17 +19,38 @@ export async function POST({ request }) {
         return json({ message: "Invalid email format" }, { status: 400 });
     }
 
-    const sentFrom = new Sender('leads@josephdstephens.com', 'Portfolio Contact');
+    const sentFrom = new Sender('leads@josephdstephens.com', 'Joseph Stephens Portfolio');
     const recipients = [new Recipient('joey.stephens524@gmail.com', 'Joey Stephens')];
+
+    const htmlContent = `
+        <h2>New Portfolio Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${contactName}</p>
+        <p><strong>Email:</strong> ${contactEmail}</p>
+        <p><strong>Project Information:</strong></p>
+        <p>${projectInfo}</p>
+        <hr>
+        <p style="font-size: 12px; color: #666;">
+            This email was sent from your portfolio contact form at josephdstephens.com
+        </p>
+    `;
+
+    const textContent = `
+New Portfolio Contact Form Submission
+
+Name: ${contactName}
+Email: ${contactEmail}
+Project Information: ${projectInfo}
+
+---
+This email was sent from your portfolio contact form at josephdstephens.com
+    `;
 
     const emailParams = new EmailParams()
         .setFrom(sentFrom)
         .setTo(recipients)
-        .setSubject('Portfolio Contact Form')
-        .setHtml(`Someone sent you a contact form from your portfolio. <br />
-        Name: ${contactName}<br />
-        Email: ${contactEmail}<br />
-        Project Info: ${projectInfo}`);
+        .setSubject('New Portfolio Contact: ' + contactName)
+        .setHtml(htmlContent)
+        .setText(textContent);
 
     try {
         const response = await mailerSend.email.send(emailParams);
